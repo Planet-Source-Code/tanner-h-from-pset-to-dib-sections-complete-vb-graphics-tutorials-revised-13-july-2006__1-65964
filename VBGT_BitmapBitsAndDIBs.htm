@@ -1,0 +1,2578 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="en-us">
+<head>
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  <title>Tanner Helland's VB Graphics Tutorials - Part 3 (BitmapBits and DIB Sections)</title>
+<!--DO NOT REMOVE THIS TEXT! Template provided by http://www.2createawebsite.com. For more free templates go to http://www.2createawebsite.com/build/templates.html-->
+  <meta content="Tanner Helland (www.tannerhelland.com)" name="author">
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  <meta content="Part 3 of the comprehensive VB graphics programming tutorial set" name="description">
+</head>
+
+
+<body style="direction: ltr;" alink="#ff0000" link="#000080" vlink="#000080">
+
+
+
+
+
+
+
+
+<div style="font-family: Verdana;" align="center">
+<table style="background-color: rgb(232, 255, 255); width: 90%;" border="1" cellpadding="15">
+
+
+
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+
+
+
+    <tr>
+
+
+
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      
+      
+      
+      <p align="center"><font color="#000080" size="5"><b>VB Graphics Programming&nbsp;- Part 3</b></font></p>
+
+
+
+
+
+
+
+
+      
+      
+      
+      
+      
+      
+      
+      <p align="center"><font color="#000080" size="5"><b><small>by
+      <a href="mailto:tannerhelland@hotmail.com">Tanner "DemonSpectre" Helland</a></small></b></font></p>
+
+
+
+
+
+
+
+
+      </td>
+
+
+
+
+
+
+
+
+    </tr>
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+<table border="0" cellpadding="8" cellspacing="0" width="90%">
+
+
+
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+
+
+
+    <tr>
+
+
+
+
+
+
+
+
+      <td bgcolor="#e8ffff" valign="top" width="20%">
+      
+      
+      
+      
+      
+      
+      
+      <table style="width: 149px; height: 118px;" border="0">
+
+
+
+
+
+
+
+
+        <tbody>
+
+
+
+
+
+
+
+
+          <tr>
+
+
+
+
+
+
+            <td>&nbsp;</td>
+
+
+
+
+
+
+          </tr>
+
+
+
+
+
+
+          <tr>
+
+
+
+
+
+
+
+
+            <td style="text-align: center;">
+            
+            
+            
+            
+            
+            
+            
+            <p align="center"><a href="VBGT_Intro.htm"><font size="2">Intro</font></a></p>
+
+
+
+
+
+
+
+
+            </td>
+
+
+
+
+
+
+
+
+          </tr>
+
+
+
+
+
+
+
+
+          <tr>
+
+
+
+
+
+
+
+
+            <td align="center"><a rel="me" href="VBGT_PureVB.htm">
+            <font size="2">1 - Pure VB</font></a></td>
+
+
+
+
+
+
+
+
+          </tr>
+
+
+
+
+
+
+
+
+          <tr>
+
+
+
+
+
+
+
+
+            <td align="center"><a rel="me" href="VBGT_GSPixel.htm">
+            <font size="2">2 - Slow API</font></a></td>
+
+
+
+
+
+
+
+
+          </tr>
+
+
+
+
+
+
+
+
+          <tr>
+
+
+
+
+
+
+
+
+            <td align="center"><a href="VBGT_BitmapBitsAndDIBs.htm">
+            <font size="2">3 - Fast API</font></a></td>
+
+
+
+
+
+
+          </tr>
+
+
+
+
+
+
+          <tr>
+
+
+
+
+
+
+            <td align="center"><font><a href="VBGT_Optimizing.htm"><font size="2">4&nbsp;- Adv. Optimizing</font></a></font></td>
+
+
+
+
+
+
+          </tr>
+
+
+
+
+
+
+          <tr>
+
+
+
+
+
+
+          </tr>
+
+
+
+
+
+
+          <tr>
+
+
+
+
+
+
+
+
+          </tr>
+
+
+
+
+
+
+
+
+          
+
+        
+        
+        
+        
+        
+        
+        
+        </tbody>
+      
+      
+      
+      
+      
+      
+      
+      </table>
+
+
+
+
+
+
+
+
+      
+      
+      
+      
+      
+      
+      
+      <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
+
+
+
+
+
+
+        <tbody>
+
+
+
+
+
+
+          <tr>
+
+
+
+
+
+
+            <td>&nbsp;<br>
+
+
+
+
+
+
+&nbsp;<br>
+
+
+
+
+
+
+&nbsp;<br>
+
+
+
+
+
+
+&nbsp;<br>
+
+
+
+
+
+
+&nbsp;<br>
+
+
+
+
+
+
+            </td>
+
+
+
+
+
+
+          </tr>
+
+
+
+
+
+
+        
+        
+        
+        
+        
+        
+        </tbody>
+      
+      
+      
+      
+      
+      
+      </table>
+
+
+
+
+
+
+
+
+      
+      
+      
+      
+      
+      
+      
+      <table style="background-color: rgb(255, 255, 204); width: 147px; height: 188px;" border="1" bordercolor="#a2b3b3" cellpadding="7" cellspacing="0">
+
+
+
+
+
+
+
+
+        <tbody>
+
+
+
+
+
+
+
+
+          <tr>
+
+
+
+
+
+
+
+
+            <td>
+            
+            
+            
+            
+            
+            
+            
+            <p align="center"><b>Want more tutorials?</b></p>
+
+
+
+
+
+
+            
+            
+            
+            
+            
+            
+            <p align="center"><b>Let me know!</b></p>
+
+
+
+
+
+
+
+
+            
+            
+            
+            
+            
+            
+            
+            <p align="left"><font size="1"><a href="mailto:tannerhelland@hotmail.com">Contact the author</a> and let him know your feelings about this tutorial!</font></p>
+
+
+
+
+
+
+            
+            
+            
+            
+            
+            
+            <p align="left"><font size="1">Or, visit his site at <a href="http://www.tannerhelland.com" rel="me" target="_blank">www.tannerhelland.com</a></font></p>
+
+
+
+
+
+
+
+
+            
+
+            </td>
+
+
+
+
+
+
+
+
+          </tr>
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        </tbody>
+      
+      
+      
+      
+      
+      
+      
+      </table>
+
+
+
+
+
+
+
+
+      </td>
+
+
+
+
+
+
+
+
+      <td valign="top" width="80%">
+      
+      
+      
+      
+      
+      <p style="text-align: left;"><font size="2"><span style="font-weight: bold;">Advanced API Pixel Routines</span></font></p>
+
+
+
+
+      <font face="Verdana" size="2">Next comes two
+advanced ways of getting and setting pixels in Visual Basic: the API
+routines of GetBitmapBits/SetBitmapBits and GetDIBits/StretchDIBits. &nbsp;If you haven't already, I
+strongly recommend reading the previous two tutorials, <a href="VBGT_PureVB.htm" rel="me">"Pure VB Pixel
+Routines"</a> and <a href="VBGT_GSPixel.htm" rel="me">"Basic API Pixel Routines,"</a> as they provide the
+foundation for the advanced graphics principles discussed in this section.<br>
+
+
+
+      </font>
+      
+      
+      
+      <p><font face="Verdana" size="2">Assuming that you now understand
+how to use
+both Visual Basic and the API to get per-pixel data, it's time to move
+to the next - and most difficult - section of these tutorials.
+&nbsp;Next we're going to go
+through the API routines of GetBitmapBits/SetBitmapBits and
+GetDIBits/StretchDIBits. &nbsp;Both sets of routines are very fast and
+very
+powerful, but I had better throw in a disclaimer here - <b>pay close attention to any </b></font><b><font color="#ff0000" face="Verdana" size="2">red warnings</font><font face="Verdana" size="2"> on this page. &nbsp;</font></b><font face="Verdana" size="2">Because&nbsp;these API routines directly interface the heap (dynamically
+allocated memory), you can easily crash both the VBIDE and Windows with
+a page fault or worse if you use them incorrectly. &nbsp;Believe me - it's not a pretty sight to watch
+your entire machine freeze because you accidentally allocated your
+array to the wrong size. &nbsp;(But it gives you a good taste of programming
+in non-BASIC languages, heh heh :).</font></p>
+
+
+
+
+      
+      
+      
+      <p><font face="Verdana" size="2">But on the happy side of things, these
+are about as fast as graphics get in VB. &nbsp;There are ways to use
+CopyMemory, in-line assembly language, and other freakish routines to get
+slightly faster effects, but they are not designed specifically for graphics programming so I'm going to avoid them here. &nbsp;</font></p>
+
+
+
+      
+      
+      
+      <p><font face="Verdana" size="2">On to the programming!</font></p>
+
+
+
+      
+      
+      
+      <p><font face="Verdana" size="2"><span style="font-weight: bold;">I - Declaring the Necessary API Functions</span></font></p>
+
+
+
+      
+      
+      
+      <p><font face="Verdana" size="2">At this point in your VB
+career you are probably used to interacting with images one pixel at a
+time (using something like the aforetaught PSet/Point or GetPixel/SetPixel/V). &nbsp;This makes
+for&nbsp;pretty easy programming, but it's very, <i>very</i> slow.
+There are many reasons for this lack of speed (<a href="VBGT_PureVB.htm#soSlow" rel="me">as discussed in the first page of this
+tutorial</a>), so developers sought to create a routine that removed some
+of those speed barriers.</font></p>
+
+
+
+
+      
+      
+      
+      <p><font face="Verdana" size="2">Enter GetBitmapBits and SetBitmapBits.
+&nbsp;The huge advantage of these two API calls is that instead of having to
+extract or set each pixel individually, we pass each of these functions
+an array and let them fill the whole thing at once with the picture's
+pixel data (or set the picture's pixel data all at once with the
+information in the array). &nbsp;This is much more efficient.&nbsp; The trade-off, of
+course, is that this involves a little more programming and
+significantly more risk. &nbsp;If the array dimensions are off by a mere <i>1 byte</i>
+all kinds of things can happen - the picture won't appear at all, your
+program will shut itself down, or your entire machine could freeze up.&nbsp;
+But these only happen if you're careless and don't heed my warnings -&nbsp;so pay close attention and don't get too scared. :)</font></p>
+
+
+
+
+      
+      
+      
+      <p><font face="Verdana" size="2">As you can imagine, we start by declaring a whole bunch of things:</font></p>
+
+
+
+
+      <font face="Verdana" size="2"><b></b></font>
+      
+      
+      
+      <hr style="width: 100%; height: 2px;"><font face="Verdana" size="2"><b>
+      </b></font><big><code><font face="Courier New" size="2">
+      
+      
+      
+      <p><big>Private Type Bitmap</big></p>
+
+
+
+      <big>
+      </big>
+      
+      
+      
+      <p><big>&nbsp; &nbsp;bmType As Long</big></p>
+
+
+
+      <big>
+      </big>
+      
+      
+      
+      <p><big>&nbsp; &nbsp;bmWidth As Long</big></p>
+
+
+
+      <big>
+      </big>
+      
+      
+      
+      <p><big>&nbsp; &nbsp;bmHeight As Long</big></p>
+
+
+
+      <big>
+      </big>
+      
+      
+      
+      <p><big>&nbsp; &nbsp;bmWidthBytes As Long</big></p>
+
+
+
+      <big>
+      </big>
+      
+      
+      
+      <p><big>&nbsp; &nbsp;bmPlanes As Integer</big></p>
+
+
+
+      <big>
+      </big>
+      
+      
+      
+      <p><big>&nbsp; &nbsp;bmBitsPixel As Integer</big></p>
+
+
+
+      <big>
+      </big>
+      
+      
+      
+      <p><big>&nbsp; &nbsp;bmBits As Long</big></p>
+
+
+
+      <big>
+      </big>
+      
+      
+      
+      <p><big>End Type</big></p>
+
+
+
+      <big>
+      </big>
+      
+      
+      
+      <p><big>Private Declare Function GetObject Lib "gdi32" Alias "GetObjectA"
+(ByVal hObject As Long, ByVal nCount As Long, ByRef lpObject As Any) As
+Long</big></p>
+
+
+
+      <big>
+      </big>
+      
+      
+      
+      <p><big>Private Declare Function GetBitmapBits Lib "gdi32" (ByVal hBitmap As Long, ByVal dwCount As Long, ByRef lpBits As Any) As Long</big></p>
+
+
+
+      <big>
+      </big>
+      
+      
+      
+      <p><big>Private Declare Function SetBitmapBits Lib "gdi32" (ByVal hBitmap As Long, ByVal dwCount As Long, ByRef lpBits As Any) As Long</big></p>
+
+
+
+      <big>
+      </big></font></code></big>
+      
+      
+      
+      <hr style="width: 100%; height: 2px;">
+      
+      
+      
+      <p><font face="Verdana" size="2">This might seem a little extreme, so let me go through each of these one at a time.</font></p>
+
+
+
+
+      
+      
+      
+      <p><font face="Verdana" size="2">The 'Bitmap' type is required for the
+'GetObject' call&nbsp;- if you'll look at GetObject's declaration, you'll
+notice that the last parameter is of type 'Any.' This is where we will
+be passing our 'Bitmap' object. As for the individual elements of the
+'Bitmap' type, here we only care about four out of the seven variables.
+They are:</font></p>
+
+
+
+
+
+
+
+      
+      
+      
+      <ul>
+
+
+
+        
+        
+        
+        <ul>
+
+
+
+          
+        
+        </ul>
+
+      
+      </ul>
+
+      
+      <p style="margin-left: 40px;"><font face="Verdana" size="2"><li>bmWidth - the width of the bitmap, in pixels </li>
+
+
+
+
+          <li>bmHeight - the height of the bitmap, in pixels </li>
+
+
+
+
+          <li>bmWidthBytes - the width of a bitmap, <span style="font-weight: bold; font-style: italic;">in </span><i><span style="font-weight: bold; font-style: italic;">bytes</span>.</i> If a bitmap
+is 24 <span style="font-style: italic;">bits</span>-per-pixel (bpp), that means that each pixel occupies 3
+            <span style="font-style: italic;">bytes</span>. So in this color mode, bmWidthBytes would be (bmWidth * 3). If a
+bitmap were 16 bpp, each pixel would occupy 2 bytes. In that color
+mode, bmWidthBytes would be (bmWidth * 2). </li>
+
+
+
+
+          <li>bmBitsPixel - the number of <span style="font-style: italic;">bits</span> per pixel in the image. In 24bpp
+mode, the number is 24. In 16bpp mode, the number is 16. Pretty
+straightforward. Divide this number by 8 to get the number of <i>bytes</i> per pixel.</li>
+
+
+
+          </font></p>
+
+      
+      <ul style="margin-left: 40px;">
+
+        
+        <ul>
+
+
+        
+        
+        
+        </ul>
+
+
+
+      
+      
+      
+      </ul>
+
+
+
+
+      
+      
+      
+      
+
+      
+      
+      
+      <p><font face="Verdana" size="2">The other three variables aren't
+needed for getting and setting pixels; we simply include them to ensure
+that our 'Bitmap' type matches the Windows 'Bitmap' type.</font></p>
+
+
+
+
+      
+      
+      
+      <p><font face="Verdana" size="2">Next we have the GetObject call.&nbsp; The
+purpose of this API call is to...well, get an object. &nbsp;You'll see how
+this works in a moment. </font></p>
+
+
+
+      
+
+
+      
+
+
+
+
+      
+      
+      
+      <ul style="margin-left: 40px;">
+
+
+
+        
+        
+        
+        <ul>
+
+
+
+          
+        
+        </ul>
+
+      
+      </ul>
+
+      
+      <p style="margin-left: 40px;"><font face="Verdana" size="2"><li>hObject is an object (containing a
+picture) that we want to get information about - most likely
+PictureBox.Image or Form.Image. &nbsp;The properties of hObject will be
+transferred into lpObject (see below). </li>
+
+
+
+
+          <li>nCount is the size of the type that is going to receive the information (in our case, the size of the 'Bitmap' type) </li>
+
+
+
+
+          <li>lpObject is the variable that is going to hold all of the
+information that we get from hObject (a variable of the 'Bitmap' type
+we've just declared, in fact). &nbsp;Notice that it is passed ByRef - this allows the API
+call to edit that variable directly.</li>
+
+
+
+          </font></p>
+
+      
+      <ul style="margin-left: 40px;">
+
+        
+        <ul>
+
+
+        
+        
+        
+        </ul>
+
+
+
+      
+      
+      
+      </ul>
+
+
+
+
+      
+      
+      
+      
+
+      
+      
+      
+      <p><font face="Verdana" size="2">GetBitmapBits and SetBitmapBits have identical parameters, which in turn are almost identical to the GetObject parameters. </font></p>
+
+
+
+      
+
+
+      
+
+
+
+
+      
+      
+      
+      <ul style="margin-left: 40px;">
+
+
+
+        
+        
+        
+        <ul>
+
+
+
+          
+        
+        </ul>
+
+      
+      </ul>
+
+      
+      <p style="margin-left: 40px;"><font face="Verdana" size="2"><li>hBitmap represents an object containing a picture (like hObject above, most likely PictureBox.Image) </li>
+
+
+
+
+          <li>dwCount is the total size of the array holding the image's pixel data </li>
+
+
+
+
+          <li>lpBits is the starting address of the place in memory where we want
+to place the image data (almost always the first spot of an array).
+Notice, again, that it is declared as ByRef - this allows the API call
+to edit the array directly (which is a good thing, because that's how
+we get the image data!).</li>
+
+      </font></p>
+
+      
+      <ul>
+
+        
+        <ul>
+
+          <font face="Verdana" size="2">
+
+          </font>
+        
+        
+        
+        </ul>
+
+
+
+      
+      
+      
+      </ul>
+
+
+
+
+
+
+
+      
+      
+      
+      <p><font face="Verdana" size="2">Okay - that's a whole lot of
+information in a small space, so take a quick break to make sure you
+understand at least a part of each of those declarations. &nbsp;If some
+of this is a little hazy, that's okay because we're going to see how
+they work
+in just a second.</font></p>
+
+
+
+      
+      
+      
+      <p><font face="Verdana" size="2"><span style="font-weight: bold;">II - Getting Pixels Using GetBitmapBits</span></font></p>
+
+
+
+      
+      
+      
+      <p><font face="Verdana" size="2">Ready?&nbsp; If so, here's how we use GetBitmapBits:</font></p>
+
+
+
+      <font face="Verdana" size="2"><b></b></font>
+      
+      
+      <hr style="width: 100%; height: 2px;"><font face="Verdana" size="2"><b>
+      </b></font><big><code><font face="Courier New" size="2">
+      
+      
+      <p><big>Dim bm As Bitmap</big></p>
+
+
+      <big>
+      </big>
+      
+      
+      <p><big>GetObject PictureBox.Image, Len(bm), bm</big></p>
+
+
+      <big>
+      </big>
+      
+      
+      <p><big>Dim ImageData() as Byte</big></p>
+
+
+      <big>
+      </big>
+      
+      
+      <p><big>ReDim ImageData(0 To (bm.bmBitsPixel \ 8) - 1, 0 To bm.bmWidth - 1, 0 To bm.bmHeight - 1)</big></p>
+
+
+      <big>
+      </big>
+      
+      
+      <p><big>GetBitmapBits PictureBox.Image, bm.bmWidthBytes * bm.bmHeight, ImageData(0, 0, 0)</big></p>
+
+
+      <big>
+      </big></font></code></big>
+      
+      
+      <hr style="width: 100%; height: 2px;">
+      
+      
+      <p><font face="Verdana" size="2">The procedure is very
+straightforward. &nbsp;First, we declare a 'Bitmap' object and call the
+GetObject function. &nbsp;When called, GetObject will analyze the Picture Box
+and assign the appropriate values to our Bitmap object, which we can
+then use to know how to prepare our array to receive the image's pixel data.</font></p>
+
+
+
+      
+      
+      <p><font face="Verdana" size="2">Once we have all of the picture box's
+information available to us in the form of a 'Bitmap' object, we
+declare ourselves an array. This 'ImageData' array is of critical importance -&nbsp;we're going
+to use it to hold all of the picture's pixel information. &nbsp;To make sure
+that it is the right size for doing this, we use 'ReDim' to make its
+dimensions just the right size: </font></p>
+
+
+
+
+
+
+      
+      
+      <ul>
+
+
+        
+        
+        <ul>
+
+
+          
+        
+        </ul>
+
+      
+      </ul>
+
+      
+      <p style="margin-left: 40px;"><font face="Verdana" size="2"><li>The first dimension will contain the
+values of each pixel's red, green, and blue values. (bm.bmBitsPixel
+should equal 24 because your computer is in 24 bit color mode; thus we
+get 24/8 = 3 <i>bytes</i> per pixel. Because we start the dimension at
+zero, we subtract one from the upper bound to give us three total
+spots: 0, 1, and 2, which correspond to red (2), green (1), and blue
+(0))&nbsp; </li>
+
+
+
+          <li>The second dimension will be used to address the x coordinates of
+the image's pixels.</li>
+
+
+
+          <li>The third dimension will used to address the y coordinates of the image's pixels.</li>
+
+      </font></p>
+
+      
+      <ul>
+
+        
+        <ul>
+
+          <font face="Verdana" size="2">
+          </font>
+        
+        
+        </ul>
+
+
+      
+      
+      </ul>
+
+
+
+
+
+
+      
+      
+      <p><b><font color="#000080" face="Verdana" size="2">SIDE NOTE ABOUT 'GETOBJECT': </font></b><font color="#000080" face="Verdana" size="2">You
+may be wondering why we use the GetObject call at all - couldn't we
+just resize the ImageData array using the picture box's ScaleWidth and
+ScaleHeight properties? &nbsp;In theory, you could. &nbsp;However, VB5
+does strange
+things to the ScaleWidth and ScaleHeight properties depending on what
+is stored there. &nbsp;For example, the same image might report
+different
+ScaleWidth and ScaleHeight properties at different execution
+times.&nbsp; In
+my experience, JPEGs are notoriously bad at this - when you load one,
+VB5 sometimes thinks that the picture's width is one pixel less in the
+picture box than it
+is in memory. &nbsp;Honestly, I have no idea as to why VB5 has this
+problem.&nbsp; VB6 seems to work fine. &nbsp;GetObject is always accurate so I use it instead,
+and would recommend that you do
+too.&nbsp; The speed difference is trivial, in any case.</font></p>
+
+
+
+      
+      
+      <p><font color="#000080" face="Verdana" size="2"><b>SIDE NOTE ABOUT DECLARING YOUR ARRAY:</b> You can use any number of dimensions in your array, <span style="font-style: italic;">so long as its <span style="font-weight: bold;">total</span> size is accurate</span>.
+For example, you could also do something like ReDim ImageData(0
+to&nbsp;bm.bmWidth * bm.bmHeight * 3) and the function would still work
+fine.
+The API call could care less about how the array is declared - all it
+gets is the address of the first element in the array and the number of
+bytes that it's allowed to work with. The way the array is dimensioned
+is only for your convenience. &nbsp;I like the above way because it
+makes
+editing the image very easy. This issue will be discussed further in
+the next section of this tutorial.</font></p>
+
+
+
+      <font color="#ff0000" face="Verdana" size="2">
+      
+      
+      <p><b>WARNING!!</b> &nbsp;This
+ReDim statement is where you can really screw your computer.&nbsp; If
+ImageData is too small, GetBitmapBits will attempt to put the picture
+data in unallocated memory - causing a general protection fault, a page
+fault, or some other nasty illegal operation.&nbsp; <i>Make sure that ImageData is the right size!!</i>&nbsp;
+Consider yourself warned :)</p>
+
+
+
+      </font><font face="Verdana" size="2">
+      
+      
+      <p>The GetBitmapBits call itself
+is very straightforward: it takes the array (in this case, "ImageData()") and fills
+it up with the pixel data located in PictureBox. &nbsp;Pretty easy, isn't it?&nbsp;
+Now you can edit the values any way that you want to. &nbsp;For example, the
+following loop would invert all of the pixels in the image:</p>
+
+
+
+      <b>
+      </b></font>
+      
+      <hr style="width: 100%; height: 2px;"><font face="Verdana" size="2"><b>
+
+      </b></font><big><code><font face="Courier New" size="2"><big>
+      </big>
+      
+      <p style="color: rgb(0, 153, 0);"><big>'First, get the image data using the above code section</big></p>
+
+      <big>
+
+      </big>
+      
+      <p><big>Dim X as long, Y as long</big></p>
+
+      <big>
+
+      </big>
+      
+      <p><big>For X = 0 to PictureBox.ScaleWidth - 1</big></p>
+
+      <big>
+
+      </big>
+      
+      <p><big>&nbsp;For Y = 0 to PictureBox.ScaleHeight - 1</big></p>
+
+      <big>
+
+      </big>
+      
+      <p><big>&nbsp; &nbsp;<span style="color: rgb(0, 153, 0);">'Invert the R value</span></big></p>
+
+      <big>
+
+      </big>
+      
+      <p><big>&nbsp; &nbsp;ImageData(2, X, Y) = 255 - ImageData(2, X, Y)</big></p>
+
+      <big>
+
+      </big>
+      
+      <p><big>&nbsp; &nbsp;<span style="color: rgb(0, 153, 0);">'Invert the G value</span></big></p>
+
+      <big>
+
+      </big>
+      
+      <p><big>&nbsp; &nbsp;ImageData(1, X, Y) = 255 - ImageData(1, X, Y)</big></p>
+
+      <big>
+
+      </big>
+      
+      <p><big>&nbsp; &nbsp;<span style="color: rgb(0, 153, 0);">'Invert the B value</span></big></p>
+
+      <big>
+
+      </big>
+      
+      <p><big>&nbsp; &nbsp;ImageData(0, X, Y) = 255 - ImageData(0, X, Y)</big></p>
+
+      <big>
+
+      </big>
+      
+      <p><big>&nbsp;Next Y</big></p>
+
+      <big>
+
+      </big>
+      
+      <p><big>Next X</big></p>
+
+      <big>
+
+      </big></font></code></big>
+      
+      
+      <hr style="width: 100%; height: 2px;">
+
+      
+      
+      <p><font face="Verdana" size="2">Really, GetBitmapBits&nbsp;is as easy as GetPixel if you understand the API structure.</font></p>
+
+      
+      <p><font face="Verdana" size="2"><span style="font-weight: bold;">III - Setting Pixels Using SetBitmapBits</span></font></p>
+
+      <font face="Verdana" size="2">SetBitmapBits is almost identical to GetBitmapBits:</font>
+      <font face="Verdana" size="2"><b></b></font>
+      
+      <hr style="width: 100%; height: 2px;"><font face="Verdana" size="2"><b>
+      </b></font><big><code><font face="Courier New" size="2">
+      
+      <p><big>Dim bm As Bitmap</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>GetObject PictureBox.Image, Len(bm), bm</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>SetBitmapBits PictureBox.Image, bm.bmWidthBytes * bm.bmHeight, ImageData(0, 0, 0)</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>If PictureBox.AutoRedraw = True Then </big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;PictureBox.Picture = PictureBox.Image</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;PictureBox.Refresh</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>End If</big></p>
+
+      </font></code></big><span style="font-weight: bold;"></span>
+      
+      <hr style="width: 100%; height: 2px;"><span style="font-weight: bold;"></span>
+      
+      <p><font face="Verdana" size="2">Everything is the same as
+GetBitmapBits, except that we aren't resizing the array (because it is
+already the right size and resizing it would erase all of its
+information!).&nbsp; The last if/then statement is included because
+SetBitmapBits won't automatically initialize the AutoRedraw event, so
+we have to tell it to replace the 'Picture' property (what is shown on
+the screen) with the 'Image' property (what is stored in memory).</font></p>
+
+
+      
+      <p><font face="Verdana" size="2">I hope you're finding this to be
+easy!&nbsp; In fact, it's almost too easy&hellip;so of course, there is
+a slight problem with this method: </font><b><font color="#ff0000" face="Verdana" size="2">both GetBitmapBits and SetBitmapBits only work in 24/32-bit color mode (16.7 million colors)! &nbsp;</font></b><font face="Verdana" size="2">Actually,
+they work in 16 and 8 bit color modes too, but the image data no longer
+occupies 3bpp (bpp = bits per pixel) so editing the image data is a
+little more complicated. &nbsp;It can be done, but you have to write a
+function to translate 2 bits into 3 as well as transferring the data
+into a separate array while you edit it.&nbsp; Then, to draw it, you have to
+translate the 3 bits back into 2 bits and then transfer your editing array back into
+the original one. &nbsp;It's messy and time-intensive, so I wouldn't recommend this method</font></p>
+
+
+      
+      <p><font face="Verdana" size="2">So of course, someone is going to ask
+"but how can I do fast graphics in 16 or 8 bit color mode?" That is
+what DIB sections are for, so if you want to know about them then keep
+reading.</font></p>
+
+
+      
+      <p><font face="Verdana" size="2">(Personally, I would recommend using
+DIB sections for all of your graphics programs because you'll never get
+unexpected color-mode errors with them, and it&rsquo;s a great way to add additional
+functionality to your graphics program. &nbsp;I have only discussed
+BitmapBits because they make for an excellent introduction to DIB
+sections.)</font></p>
+
+      
+      <p><font face="Verdana" size="2"><span style="font-weight: bold;">IV - A Crash Course in Declaring DIB Sections</span></font></p>
+
+      <font face="Verdana" size="2"><span style="font-weight: bold;"></span></font>
+      
+      <p><font face="Verdana" size="2">DIB section stands for
+'Device Independent Bitmap.' &nbsp;The name is pretty self-explanatory: DIBs
+are simply a way of interacting with bitmaps in any color mode or on
+any computer and getting consistent results. &nbsp;There are actually two
+varieties of DIBs - OS/2 encoded and Windows encoded, so I guess&nbsp;"device independent' isn't totally accurate... but that's
+okay. :)</font></p>
+
+
+      
+      <p><font face="Verdana" size="2">DIBs share many characteristics
+with
+BitmapBits. &nbsp;The calls share certain parameters and the underlying
+logic
+is very much the same.&nbsp; However, DIB sections have several major
+differences you need to be aware of: they're slightly more confusing to
+use, they
+require more code, and they return the image data rotated 180 degrees
+(of course, they also rotate the data 180 degrees when you set it so
+this usually isn't a problem). &nbsp;The most important difference,
+however, is that DIB
+sections work in <span style="font-style: italic;">any</span> color mode - and, as a bonus, the StretchDIBits call is much more
+powerful than SetBitmapBits. Below are the required DIB section
+declarations:</font></p>
+
+
+
+
+      
+      <hr style="width: 100%; height: 2px;">
+      
+      <dir>
+      
+      <dir>
+
+      </dir>
+
+      </dir>
+
+      <big><code><font face="Courier New" size="2">
+      
+      <p><big>Private Type BITMAP</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;bmType As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmWidth As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmHeight As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmWidthBytes As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmPlanes As Integer</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmBitsPixel As Integer</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmBits As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>End Type</big></p>
+
+      
+      <p><big></big></p>
+
+      <big>
+      </big>
+      
+      <p><big>Private Declare Function GetObject Lib "gdi32" Alias "GetObjectA"
+(ByVal hObject As Long, ByVal nCount As Long, ByRef lpObject As Any) As
+Long</big></p>
+
+      
+      <p><big></big></p>
+
+      <big>
+      </big><big>
+      </big>
+      
+      <p><big>Private Type RGBQUAD</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>rgbBlue As Byte</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>rgbGreen As Byte</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>rgbRed As Byte</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>rgbAlpha As Byte</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>End Type</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp;</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>Private Type BITMAPINFOHEADER </big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmSize As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmWidth As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmHeight As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmPlanes As Integer</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmBitCount As Integer</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmCompression As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmSizeImage As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmXPelsPerMeter As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmYPelsPerMeter As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmClrUsed As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmClrImportant As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>End Type</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp;</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>Private Type BITMAPINFO</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmHeader As BITMAPINFOHEADER</big></p>
+
+      <big>
+      </big>
+      
+      <p><big><code><font face="Courier New" size="2"><big>&nbsp; &nbsp;</big></font></code></big><big>bmColors(0 To 255) As RGBQUAD</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>End Type</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp;</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>Private Declare Function GetDIBits Lib "gdi32" (ByVal hDC As Long,
+ByVal hBitmap As Long, ByVal nStartScan As Long, ByVal nNumScans As
+Long, lpBits As Any, lpBI As BITMAPINFO, ByVal wUsage As Long) As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>Private Declare Function StretchDIBits Lib "gdi32" (ByVal hDC As
+Long, ByVal x As Long, ByVal y As Long, ByVal dWidth As Long, ByVal
+dHeight As Long, ByVal SrcX As Long, ByVal SrcY As Long, ByVal SrcWidth
+As Long, ByVal SrcHeight As Long, lpBits As Any, lpBI As BITMAPINFO,
+ByVal wUsage As Long, ByVal RasterOp As Long) As Long</big></p>
+
+      </font></code></big><font face="Courier New" size="2">
+      </font>
+      
+      <hr style="width: 100%; height: 2px;">
+
+      
+      <p><font face="Verdana" size="2">Quite the mess of declarations, isn't
+it? You should notice some similarities between these declarations and
+the BitmapBits ones - that makes our job somewhat easier. Here's the
+quick explanation of all that stuff:</font></p>
+
+      
+      
+      <div style="margin-left: 40px;"><font face="Verdana" size="2"><li>The first type and declaration are just the same old GetObject stuff - you already know <i>all</i> about that. </li>
+
+      </font><font face="Verdana" size="2">
+      <li>The next type, RGBQuad, represents basic pixel data - the standard red, green, and blue, along with an alpha channel.</li>
+
+      </font></div>
+
+
+
+
+
+      
+      <p><b><font color="#000080" face="Verdana" size="2">SIDE NOTE ON ALPHA CHANNELS:</font></b><font color="#000080" face="Verdana" size="2">&nbsp;For
+those who are interested: both DIBs and regular bitmaps can contain
+transparency information. &nbsp;If you have (what used to be, heh) an
+expensive monitor and video card and run them at 32-bit color mode,
+that extra byte contains transparency data (a number from 0-255, 0
+being opaque and 255 being transparent).&nbsp; So technically, 32-bit
+bitmaps and DIBs could be
+used like GIFs or PNGs and displayed transparently. &nbsp;There's
+actually an
+API call with Win2K/ME/XP called "AlphaBlend" that's similar to
+BitBlt/StretchBlt except that it utilizes an alpha channel (this method
+is very similar to DirectX and a transparent key color); you can read
+all about the "AlphaBlend" call at the MSDN site.</font></p>
+
+
+
+
+
+      
+      <p style="margin-left: 40px;"><font face="Verdana" size="2"><li>The BITMAPINFOHEADER type contains <i>all </i>of
+a particular bitmap's information, unlike the stripped-down version we
+use for GetObject. &nbsp;This is what makes DIB sections "Device Independent"
+- by knowing all of that extra information about the bitmap we can
+display it accurately on any device at any color resolution. </li>
+
+
+      <li>Lastly, the BITMAPINFO class combines a header and an array of
+RGBQUADs (used for the palette in 8-bit images). &nbsp;This header is capable
+of holding data for DIB sections of any color depth - from 1bpp to
+32bpp.&nbsp; Again, this is part of making DIB sections "Device Independent."&nbsp;
+It also comes in handy when using 8bpp color modes because you can
+directly edit the palette for super-fast graphics effects.</li>
+
+      </font></p>
+
+
+
+
+
+      
+      <p><font face="Verdana" size="2">The GetDIBits call is somewhat more complicated than the GetBitmapBits one, so let's go through it one part at a time.</font></p>
+
+
+
+
+
+      
+      <p style="margin-left: 40px;"><font face="Verdana" size="2"><li>hDC is the same as it was in GetPixel - it is the handle/"address" of the <i>device</i> we want to get the pixel data from. Most likely, this is PictureBox.hDC or Form.hDC </li>
+
+
+      <li>hBitmap is the <i>location </i>of the pixel data itself. This is most commonly PictureBox.Image or Form.Image </li>
+
+
+      <li>nStartScan is the line we want to start reading the pixel data
+from. &nbsp;This will always be 0, unless for some odd reason you want to
+read the data from the middle of the image. </li>
+
+
+      <li>nNumScans is the number of horizontal lines that you want to read
+from the image.&nbsp; This will always be the height of the image (in
+pixels), unless you want to extract every-other-line or something
+strange like that. &nbsp;(Scanlines also come in handy for doing fast image
+rotations, but I'm not going to discuss those here ;) </li>
+
+
+      <li>lpBits is the same as it was in GetBitmapBits. &nbsp;This is the array that the image's data will be copied into. </li>
+
+
+      <li>lpBI is a BitmapInfo variable that contains all of the desired
+information of the bitmap we are want to get. &nbsp;This includes the width,
+height, and - important! - the color depth. &nbsp;This is how we let Windows
+know that even though the computer may be in 16bpp or 8bpp color modes,
+we want the bitmap information to be in 24bpp mode (color depth is
+handled via the .bmBitCount property). </li>
+
+
+      <li>Last is the wUsage variable, which<font face="Verdana" size="2"> is related to referencing source-DC-based
+palettes. Because this tutorial focuses only on 24-bit (i.e.
+non-paletted) image processing, we're going to ignore this variable completely - just always leave it as zero.</font></li>
+
+      </font></p>
+
+
+
+
+
+      
+      <p><font face="Verdana" size="2">We're almost done! &nbsp;Unforunately, though - if you thought GetDIBits was
+long-winded, you're not going to like StretchDIBits very much.
+&nbsp;StretchDIBits is a very powerful call, but this means there are a lot of
+parameters. &nbsp;If you are familiar with <a href="http://www.studentsofgamedesign.com/vb_blitting.php" rel="friend met colleague" target="_blank">BitBlt and/or
+StretchBlt</a> this part will probably make a lot of sense to you. &nbsp;The
+StretchDIBits parameters are:</font></p>
+
+
+
+
+
+      
+      <p style="margin-left: 40px;"><font face="Verdana" size="2"><li>hDC: same as GetDIBits </li>
+
+
+      <li>x: the x coordinate of the top-left corner you want to draw the pixels to </li>
+
+
+      <li>y: the y coordinate of the top-left corner you want to draw the pixels to </li>
+
+
+      <li>dWidth: the desired width of the destination image. &nbsp;This is usually
+the same size as the image you got the data from, although you can
+stretch or shrink the destination size if you wish. </li>
+
+
+      <li>dHeight: the desired height of the destination image. &nbsp;Refer to the dWidth notes. </li>
+
+
+      <li>SrcX: the x coordinate of the top-left pixel in the source array
+(for us, "ImageData()") that you want to start taking the pixels from. Usually
+zero, but you can change this value to only take a portion of the
+source image. </li>
+
+
+      <li>SrcY: the y coordinate of the top-left pixel in the source array
+that you want to start taking pixel data from.&nbsp; Refer to the SrcX notes.
+      </li>
+
+
+      <li>SrcWidth: the desired width of the pixel selection from the source
+image. This is usually the same size as the original image, although
+you can stretch or shrink the source size if you wish. </li>
+
+
+      <li>SrcHeight: the desired height of the pixel selection from the source image. Refer to the SrcWidth notes. </li>
+
+
+      <li>lpBits: same as GetDIBits. This is the array that the pixel data will be taken from (again, "ImageData()") </li>
+
+
+      <li>lpBi: same as GetDIBits. This is the BitmapInfo variable that contains all of the correct parameters for our pixel data. </li>
+
+
+      <li>wUsage: same as GetDIBits - leave it as zero. </li>
+
+
+      <li>RasterOp: a raster operation, exactly the same as you would use for
+        <a href="http://www.studentsofgamedesign.com/vb_blitting.php" rel="friend met colleague" target="_blank">BitBlt or StretchBlt</a>. There is a whole list of RasterOp constants
+listed in the VB help files (or MSDN collection), but the most common
+one is 'vbSrcCopy,' which will simply copy the pixels from the source
+array to the destination picture box.</li>
+
+      </font></p>
+
+
+
+
+
+      
+      <p><font face="Verdana" size="2">That's a freaking lot of explanation.
+I need a break, and you should take one too!</font></p>
+
+      
+      <p><font face="Verdana" size="2"><span style="font-weight: bold;">V - Using DIB Sections</span></font></p>
+
+      
+      <p><font face="Verdana" size="2">Now that your brain has had
+some time to digest all of those declarations, let's move&nbsp;to using the GetDIBits
+call.&nbsp; Here's a full-blown example of how to get an image's data using
+the GetDIBits call, minus the declarations above:</font>
+      </p>
+
+      
+      <hr style="width: 100%; height: 2px;">
+      
+      <p><font face="Verdana" size="2"><b>
+      </b></font><big><code><font face="Courier New" size="2">
+      
+      <p style="color: rgb(0, 153, 0);"><big><span style="font-weight: bold;">'</span>Routine to get an image's pixel information into an array dimensioned (rgb, x, y)</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>Public Sub GetImageData(ByRef SrcPictureBox As PictureBox, ByRef ImageData() As Byte)</big></p>
+
+      <big>
+      </big>
+      
+      <p style="color: rgb(0, 153, 0);"><big>&nbsp; &nbsp;'Declare&nbsp;variables of the necessary bitmap types</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;Dim bm As Bitmap </big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;Dim bmi As BITMAPINFO</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;<span style="color: rgb(0, 153, 0);">'Now we fill up the bmi (Bitmap information variable) with all of the appropriate data</span></big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;bmi.bmHeader.bmSize = 40 <span style="color: rgb(0, 153, 0);">'Size, in bytes, of the header (always 40)</span></big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;bmi.bmHeader.bmPlanes = 1 <span style="color: rgb(0, 153, 0);">'Number of planes (always one)</span></big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;bmi.bmHeader.bmBitCount = 24 <span style="color: rgb(0, 153, 0);">'Bits per pixel (always 24 for image processing)</span></big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;bmi.bmHeader.bmCompression = 0 <span style="color: rgb(0, 153, 0);">'Compression:&nbsp;none or RLE (always zero)</span></big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;<span style="color: rgb(0, 153, 0);">'Calculate the size of the bitmap type (in bytes)</span></big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;Dim bmLen As Long</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;bmLen = Len(bm)</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;<span style="color: rgb(0, 153, 0);">'Get the picture box information from SrcPictureBox and put it into our 'bm' variable</span></big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;GetObject SrcPictureBox.Image, bmLen, bm</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;<span style="color: rgb(0, 153, 0);">'Build a correctly sized array.</span></big></p>
+
+      <big>
+      </big><big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;ReDim ImageData(0 To 2, 0 To bm.bmWidth - 1, 0 To bm.bmHeight - 1)</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;<span style="color: rgb(0, 153, 0);">'Finish building the 'bmi' variable we want to pass to the GetDIBits call (the same variable we used above)</span></big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;bmi.bmHeader.bmWidth = bm.bmWidth</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;bmi.bmHeader.bmHeight = bm.bmHeight</big></p>
+
+      <big>
+      </big>
+      
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;<span style="color: rgb(0, 153, 0);">'Now that we've completely filled up the 'bmi' variable, we use GetDIBits to take the data from</span><span style="color: rgb(0, 153, 0);"> SrcPictureBox and put it into the ImageData() array using the settings we specified in 'bmi'</span></big></p>
+
+      <big>
+      </big>
+      
+      <p><big>&nbsp; &nbsp;GetDIBits SrcPictureBox.hDC, SrcPictureBox.Image, 0, bm.bmHeight, ImageData(0, 0, 0), bmi, 0</big></p>
+
+      <big>
+      </big>
+      
+      <p><big>End Sub</big></p>
+
+      <big>
+      </big></font></code></big></p>
+
+      
+      <hr style="width: 100%; height: 2px;">
+      
+      <p><font face="Verdana" size="2">Okay, kids, we're almost done with DIB sections - all that's left is StretchDIBits.</font></p>
+
+
+      
+      <p><font face="Verdana" size="2">The procedure required to set up our
+variables for StretchDIBits is almost identical to the procedure we
+used for GetDIBits. In fact, everything up to the actual GetDIBits call
+is the same - everything except the ReDim ImageData() line, of course.&nbsp;
+(If we ReDimmed the array before setting it, we would erase all of
+the pixel data!). &nbsp;Here's a full example:</font></p>
+
+
+      
+      <hr style="width: 100%; height: 2px;">
+      
+      <p><font face="Verdana" size="2"><b>
+      </b></font><font face="Courier New" size="2">
+      
+      <p style="color: rgb(0, 153, 0);"><span style="font-weight: bold;">'</span>Routine to set an image's pixel information from an array dimensioned (rgb, x, y)</p>
+
+
+      
+      <p>Public Sub SetImageData(ByRef DstPictureBox As PictureBox, ByRef ImageData() As Byte)</p>
+
+
+      
+      <p style="color: rgb(0, 153, 0);">&nbsp; &nbsp;'Variables for the necessary bitmap types</p>
+
+
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>Dim bm As Bitmap </p>
+
+
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>Dim bmi As BITMAPINFO</p>
+
+
+      
+      <p style="color: rgb(0, 153, 0);"><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>'Now
+we fill up the bmi (Bitmap information variable) with all of the
+appropriate data - this is identical to what you've already seen</p>
+
+
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>bmi.bmHeader.bmSize = 40 &nbsp;</p>
+
+
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>bmi.bmHeader.bmPlanes = 1 &nbsp;</p>
+
+
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>bmi.bmHeader.bmBitCount = 24 &nbsp;</p>
+
+
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>bmi.bmHeader.bmCompression = 0 &nbsp;</p>
+
+
+      
+      <p style="color: rgb(0, 153, 0);"><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>'Calculate the size of the bitmap type (in bytes)</p>
+
+
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>Dim bmLen As Long</p>
+
+
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>bmLen = Len(bm)</p>
+
+
+      
+      <p style="color: rgb(0, 153, 0);"><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>'Get the picture box information from DstPictureBox and put it into our 'bm' variable</p>
+
+
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>GetObject DstPictureBox.Image, bmLen, bm</p>
+
+
+
+      
+      <p style="color: rgb(0, 153, 0);"><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>'Now
+that we know the object's size, finish building the temporary header to
+pass to the StretchDIBits call (continuing to use the 'bmi' we used
+above)</p>
+
+
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>bmi.bmHeader.bmWidth = bm.bmWidth</p>
+
+
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>bmi.bmHeader.bmHeight = bm.bmHeight</p>
+
+
+
+
+      
+      <p style="color: rgb(0, 153, 0);"><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>'Now
+that we've built the temporary header, we use StretchDIBits to take the
+data from the ImageData() array and put it into SrcPictureBox using the
+settings specified in 'bmi' (the StretchDIBits call should be on one
+continuous line)</p>
+
+
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>StretchDIBits DstPictureBox.hDC, 0, 0, bm.bmWidth, bm.bmHeight, 0,
+0, bm.bmWidth, bm.bmHeight, ImageData(0, 0, 0), bmi, 0, vbSrcCopy</p>
+
+
+      
+      <p style="color: rgb(0, 153, 0);"><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>'Since this doesn't automatically initialize AutoRedraw, we have to do it manually</p>
+
+
+      </font><font color="#ff0000" face="Courier New" size="2">
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>'Note: always keep AutoRedraw as 'True' when using DIB sections. Otherwise, you WILL get unpredictable results.</p>
+
+
+      </font><font face="Courier New" size="2">
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>If DstPictureBox.AutoRedraw = True Then</p>
+
+
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>&nbsp; &nbsp;DstPictureBox.Picture = DstPictureBox.Image</p>
+
+
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>&nbsp; &nbsp;DstPictureBox.Refresh</p>
+
+
+      
+      <p><font><font face="Courier New" size="2">&nbsp; &nbsp;</font></font>End If</p>
+
+
+      
+      <p>End Sub</p>
+
+
+      </font></p>
+
+      
+      <hr style="width: 100%; height: 2px;">
+
+      
+      <p><font face="Verdana" size="2">&nbsp;And there you have it - a complete
+explanation of how to get image data from any picture in any color mode
+and how to set that same data back into a picture once you're done
+editing it.</font></p>
+
+      
+      <p></p>
+
+      
+      <p><font face="Verdana" size="2"><span style="font-weight: bold;">VI - DIB Sections in Action</span></font></p>
+
+      
+      <p style="text-align: center;"><font face="Verdana" size="2"><a href="VBGT_DIB_example.zip" rel="me"><big>DOWNLOAD THE DIB EXAMPLE PROGRAM</big></a></font></p>
+
+      
+      <p><font face="Verdana" size="2">This&nbsp;.zip file shows these
+exact routines - cut and pasted out of this tutorial into a form -
+being used to adjust the brightness of an image. &nbsp;Quite a bit
+better than GetPixel and SetPixel, isn't it? &nbsp;And, obviously, this
+is a <span style="font-style: italic;">ton</span> faster than Point and PSet.</font></p>
+
+      
+      <p><font face="Verdana" size="2">It may surprise you, but&nbsp;on
+the next page of these tutorials we're going to get this program
+running even faster - we're going to use some DIB section tricks to
+make it run in REALTIME. &nbsp;And people say VB can't do fast
+graphics! &nbsp;Ha!<span style="font-weight: bold;"></span></font></p>
+
+      
+      <p><small>Before we continue, however, I am including an optional
+section regarding the infamous 4-bit alignment issue associated with
+DIB sections. &nbsp;If you are interested in using DIB sections only
+casually, this issue may not apply to you. &nbsp;If, however, you plan
+on using DIB sections extensively, this issue is critical.
+&nbsp;Basically, DIB sections have trouble if you use them on an image
+whose width is not a multiple of 4. &nbsp;We'll discuss how to deal
+with this problem in the optional section below.</small></p>
+
+      
+      <p><small>&nbsp;</small></p>
+
+      
+      <p style="text-align: center;"><a href="VBGT_Optimizing.htm" rel="me"><small>CONTINUE TO "TANNER'S TOP 10 LIST OF GRAPHICS OPTIMIZATIONS"</small></a></p>
+
+      
+      <p>&nbsp;</p>
+
+      
+      <p><small><span style="font-weight: bold;">VI - OPTIONAL: The Infamous 4-Bit Alignment Issue</span></small></p>
+
+      
+      <p><small>If you've made the decision to read this section, I'm
+going to assume that you know a fair deal about programming. &nbsp;As
+such, I'm going to move through this at a faster pace - so stick with
+me if you can! &nbsp;:)</small></p>
+
+      
+      <p><small>As you may know,&nbsp;all modern versions of Windows
+(95, 98, ME, NT4, 2000, XP) are 32-bit operating systems. &nbsp;This
+means that memory within Windows is split up into 32-bit, or 4-byte,
+chunks. &nbsp;Normally this means very little to us, but when using DIB
+sections we have to take this into account.</small></p>
+
+      
+      <p><small>Because DIB sections are designed to be fast (that's
+the whole reason we're discussing them in these tutorials, after all!),
+they're optimized for speed in many ways. &nbsp;One such way is that
+they require any arrays associated with them to be 4-bytes (or 32 bits)
+wide. &nbsp;This allows the arrays to line up in memory&nbsp;exactly -
+without any trailing bytes - which in turn allows Windows to access the
+information slightly faster, since it doesn't have to re-align each
+horizontal line of the image to match up with 32-bit memory spaces.</small></p>
+
+      
+      <p><small>As it turns out, this isn't a problem for images whose width is a multiple of 4: <span style="font-weight: bold;">800</span>x600, <span style="font-weight: bold;">32</span>x32, <span style="font-weight: bold;">1024</span>x768, etc. &nbsp;All standard image/screen sizes are multiples of 4 for this very reason - to make them faster. &nbsp;</small></p>
+
+      
+      <p><small>Sometimes, however, it's necessary to work with images
+whose width may not be divisible by 4 (29, 30, and 31 instead of 32,
+etc). &nbsp;This creates serious problems with DIB sections - try
+plugging such an image into the code above and you'll see what I mean.</small></p>
+
+      
+      <p><small>So how do we solve such a problem? &nbsp;There's no good way, to be honest. &nbsp;Two main options exist:</small></p>
+
+      
+      <p><small>1) Resize the image to make it have a width that's a multiple of 4.</small></p>
+
+      
+      <p><small>2) Manually force the array containing the image data to have a width that's a multiple of 4.</small></p>
+
+      
+      <p><small>The first option is preferable, but if that's not
+available to us then we have to do some hardcore adjusting of the array
+we use ("ImageData()" in this tutorial). &nbsp;This requires CopyMemory
+and a "for" loop - both of which are time killers, which is somewhat
+contrary to the point of this tutorial.</small></p>
+
+      
+      <p><small>So in the interest of space and brevity, I'm not going
+to go through the intricacies of this method in this tutorial.
+&nbsp;Instead, you can <a href="VBGT_RR_BrightnessFix.zip" rel="  colleague">download a modified brightness program</a> that demonstrates how to do this. &nbsp;<a href="http://www.planetsourcecode.com/vb/authors/ShowBio.asp?lngAuthorId=442673843&amp;lngWId=1" rel="acquaintance colleague" target="_blank">Robert Rayment</a>
+- a profilic VB programmer in his own right - put this together for me,
+and all credit for the modifications go to him. &nbsp;Please shower him
+with praise. &nbsp;:)</small></p>
+
+      
+      <p><small>After looking through that, it is also worth mentioning
+that there are alternate ways to align your array to match 4-byte
+memory restrictions. &nbsp;My favorite way is to use a 2-dimensional
+array instead of a 3-dimensional one, like so:</small></p>
+
+      
+      <hr style="width: 100%; height: 2px;">
+      
+      <p><big><code><small>ArrayWidth = (bm.bmWidth * 3) - 1<br>
+
+ArrayWidth = ArrayWidth + (bm.bmWidth Mod 4)<br>
+
+ArrayHeight = bm.bmHeight<br>
+
+ReDim ImageData(0 To ArrayWidth, 0 To ArrayHeight) As Byte</small></code></big></p>
+
+      
+      <hr style="width: 100%; height: 2px;">
+      
+      <p><font face="Verdana" size="2">This method works well, but accessing individual pixels is slightly more cumbersome:</font></p>
+
+      
+      <p><font face="Verdana" size="2">Red is in location (x * 3, y)</font></p>
+
+      
+      <p><font face="Verdana" size="2">Green is in location (x * 3 + 1, y)</font></p>
+
+      
+      <p><font face="Verdana" size="2">Blue is in location (x * 3 + 2, y)</font></p>
+
+      
+      <p><font face="Verdana" size="2">Using temp variables to store
+the x * 3 value combined with using a 2d array instead of 3d actually
+makes this faster than the&nbsp;3d array used in the tutorials.
+&nbsp;As such, this is my favorite method.</font></p>
+
+      
+      <p><font face="Verdana" size="2">Streams, mentioned in the next tutorial, also need to be 4-byte aligned.</font></p>
+
+      
+      <p><font face="Verdana" size="2">&nbsp;</font></p>
+
+      
+      <p style="text-align: center;"><a href="VBGT_Optimizing.htm" rel="me"><small>CONTINUE TO "TANNER'S TOP 10 LIST OF GRAPHICS OPTIMIZATIONS"</small></a></p>
+
+&nbsp;<br>
+
+
+
+
+      
+      
+      
+      
+      <hr style="width: 100%; height: 2px;">
+      
+      
+      
+      
+      
+      
+      
+      
+      <p><small><font size="2"><small><b><i>Disclaimer and Legal Stuff</i></b></small></font></small></p>
+
+
+
+
+
+
+      
+      
+      
+      
+      
+      
+      <p><small><font size="2"><small><i>Copyright &copy; 2005-2006 by Tanner
+"DemonSpectre" Helland. This article may not be reproduced in any form
+(printed or electronic) without prior written consent from the author.
+This document may, however, be hyperlinked on the world wide web
+without permission from the author.</i></small></font></small></p>
+
+
+
+
+
+
+
+      
+      
+      
+      
+      
+      
+      <p><small><font size="2"><small><i>All programming source code
+associated with these articles is provided "as is". In no event shall
+the author or any of his affiliates be liable for any consequential,
+special, incidental or indirect damages of any kind arising out of the
+delivery, performance or use of this source code, to the maximum extent
+permitted by applicable law. While this&nbsp;code has been developed
+with great care, it is not possible to warrant that it is error free.
+This source code is not designed or intended to be used in any activity
+that may cause personal injury, death or any other severe damage or
+loss.</i></small></font></small></p>
+
+
+
+
+
+
+
+      
+      
+      
+      
+      
+      
+      <p><small><font size="2"><small><i>Please contact </i></small></font><a href="mailto:tannerhelland@hotmail.com"><font size="2"><small>tannerhelland@hotmail.com</small></font></a><i><font size="2"><small> with feedback and questions regarding this tutorial.</small></font></i></small></p>
+
+
+
+
+
+
+      </td>
+
+
+
+
+
+
+
+
+    </tr>
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
