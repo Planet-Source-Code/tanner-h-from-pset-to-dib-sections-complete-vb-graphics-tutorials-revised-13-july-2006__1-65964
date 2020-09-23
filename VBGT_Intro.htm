@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="en-us">
+<head>
+
+  
+  <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+
+  
+
+
+
+  
+  <title>Tanner Helland's VB Graphics Tutorials - Introduction</title>
+<!--DO NOT REMOVE THIS TEXT! Template provided by http://www.2createawebsite.com. For more free templates go to http://www.2createawebsite.com/build/templates.html-->
+  <meta content="Tanner Helland (www.tannerhelland.com)" name="author">
+
+  
+  <meta content="The introduction to a comprehensive VB graphics programming tutorial set" name="description">
+</head>
+
+
+<body alink="#ff0000" link="#000080" vlink="#000080">
+
+
+<div align="center">
+<table style="background-color: rgb(232, 255, 255); width: 90%;" border="1" cellpadding="15">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td>
+      
+      <p align="center"><font color="#000080" face="Verdana" size="5"><b>VB Graphics Programming&nbsp;- An Introduction</b></font></p>
+
+
+      
+      <p align="center"><font color="#000080" face="Verdana" size="5"><b><small>by
+      <a href="mailto:tannerhelland@hotmail.com">Tanner "DemonSpectre" Helland</a></small></b></font></p>
+
+
+      </td>
+
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+
+<table border="0" cellpadding="8" cellspacing="0" width="90%">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <td bgcolor="#e8ffff" valign="top" width="20%">
+      
+      <table style="width: 149px; height: 118px;" border="0">
+
+
+        <tbody>
+
+
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+
+
+            <td style="text-align: center;">
+            
+            <p align="center"><a href="VBGT_Intro.htm"><font face="Verdana" size="2">Intro</font></a></p>
+
+
+            </td>
+
+
+          </tr>
+
+
+          <tr>
+
+
+            <td align="center"><a rel="me" href="VBGT_PureVB.htm">
+            <font face="Verdana" size="2">1 - Pure VB</font></a></td>
+
+
+          </tr>
+
+
+          <tr>
+
+
+            <td align="center"><a rel="me" href="VBGT_GSPixel.htm">
+            <font face="Verdana" size="2">2 - Slow API</font></a></td>
+
+
+          </tr>
+
+
+          <tr>
+
+
+            <td align="center"><a href="VBGT_BitmapBitsAndDIBs.htm">
+            <font face="Verdana" size="2">3 - Fast API</font></a></td>
+          </tr>
+          <tr>
+            <td align="center"><font><a href="VBGT_Optimizing.htm"><font face="Verdana" size="2">4&nbsp;- Adv. Optimizing</font></a></font></td>
+          </tr>
+          <tr>
+          </tr>
+          <tr>
+
+
+          </tr>
+
+
+          
+
+        
+        </tbody>
+      
+      </table>
+
+
+      
+      <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td>&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      
+      <table style="background-color: rgb(255, 255, 204); width: 147px; height: 188px;" border="1" bordercolor="#a2b3b3" cellpadding="7" cellspacing="0">
+
+
+        <tbody>
+
+
+          <tr>
+
+
+            <td>
+            
+            <p align="center"><font face="Verdana"><b>Want more tutorials?</b></font></p>
+            <p align="center"><font face="Verdana"><b>Let me know!</b></font></p>
+
+
+            
+            <p align="left"><font face="Verdana" size="1"><a href="mailto:tannerhelland@hotmail.com">Contact the author</a> and let him know your feelings about this tutorial!</font></p>
+            <p align="left"><font face="Verdana" size="1">Or, visit his site at <a href="http://www.tannerhelland.com" rel="me" target="_blank">www.tannerhelland.com</a></font></p>
+
+
+            
+
+            </td>
+
+
+          </tr>
+
+
+        
+        </tbody>
+      
+      </table>
+
+
+      </td>
+
+
+      <td valign="top" width="80%">
+      
+      <p align="left"><font face="Verdana" size="2"><span style="font-weight: bold;">Visual Basic CAN do fast graphics - I promise</span></font></p>
+
+      
+      <p><font face="Verdana" size="2">To my fellow Visual Basic users:</font></p>
+
+      
+      <p><font face="Verdana" size="2">In my experience, many VB
+programmers seem to believe that fast graphics programming is
+impossible in VB. &nbsp;Most complain that PSet and Point (or GetPixel
+and SetPixel) just aren't fast enough for their needs, and they feel
+like they have to switch to an alternate language for any serious
+graphics-related coding.</font></p>
+
+      
+      <p><font face="Verdana" size="2">This is most definitely not the case, and I hope - by the end of these tutorials - to have you feeling quite differently.</font></p>
+
+      
+      <p><font face="Verdana" size="2">Using some
+creativity and efficient coding you can use Visual Basic to do almost
+anything that
+C++, java,&nbsp;DirectX or OpenGL does - and almost always as
+fast&nbsp;(and in some cases faster!). &nbsp;The code for DIB
+sections,&nbsp;the ultimate end of these tutorials, is not
+well-documented anywhere
+else on the net, so I have set out to clearly explain how fast
+graphics-related code can be used inside Visual Basic without a lot of
+extra work or overly-cryptic API calls.</font></p>
+
+      
+      <p><font face="Verdana" size="2">Also, unlike other programming tutorials this series of
+articles will explain not only how to do fast graphics but <i>how </i>fast
+graphics work. You will first learn about pure VB routines for graphics
+processing; next comes the basic API routines of GetPixel and
+SetPixel/V; third comes the more advanced GetBitmapBits, SetBitmapBits,
+and DIB sections; the last tutorial will cover additional optimizations
+for the real speed demons out there. By the end of this series of
+tutorials you will be able to effectively write any graphics
+application you can dream up using nothing but Visual Basic and the
+Windows API.</font></p>
+
+
+      
+      <p><font face="Verdana" size="2">But before we jump into the code, it's probably good to clarify a little bit about graphics programming in general.</font></p>
+
+      
+      
+      <p><font face="Verdana" size="2"><span style="font-weight: bold;">General Graphics Programming Stuff</span></font></p>
+
+      
+      <p><font face="Verdana" size="2">Graphics programming (hereafter
+referred to as GP) is, in my opinion, the most far-reaching aspect of
+programming. Every Windows, Linux, and Mac program that has been
+written in the last fifteen years has utilized graphics in some way.
+Because of the popularity of GUI-based operating systems, every
+programmer has been forced to learn at least the fundamentals of GP, -
+because any program they write must include little picture boxes,
+have nice&nbsp;buttons and toolbars, load with a pretty splash screen,
+etc
+etc. </font></p>
+
+
+      
+      <p><font face="Verdana" size="2">Now it's true that some programs don't use many graphics routines - but every program you own uses <i>some</i>
+graphics. &nbsp;Next time you turn on your computer, start thinking about all
+of the GP involved in simple, everyday routines - clicking on your start
+bar, the animated folder that appears when you copy a file, that
+progress bar at the bottom of a program's window. You'll quickly be amazed at
+how many GP techniques are utilized within every program you run.</font></p>
+
+
+      
+      <p><font face="Verdana" size="2">As you can imagine, a lot could
+be said about graphics programming. &nbsp;I do not intend to talk about
+EVERYTHING graphics related, so here's the part of GP that this set of
+tutorials will
+cover: <span style="font-weight: bold;">per-pixel image interface routines.</span> &nbsp;Basically, we're going to
+discuss how to get a picture's pixel information, how to transfer it
+into a data structure we can use (arrays), and how to put those pixels back onto
+the screen once we're done with them. We'll go from the easiest and
+slowest ways to the fastest and most advanced ways available to you,
+the common Visual Basic programmer.</font></p>
+
+
+      
+      <p><font face="Verdana" size="2">What this tutorial will <i>not</i>
+cover is how to do specific image editing routines (please refer to the
+numerous source code examples on the internet for that), how to write
+graphics-based dlls or ocxs, or how to use DirectX. There are resources
+for each of these if you are interested; my goal is simply to outline
+the standard Windows API methods for per-pixel image interfacing.</font></p>
+
+
+      
+      <p><font face="Verdana" size="2">Are you excited? &nbsp;You should be! &nbsp;On to the tutorials!&nbsp;</font></p>
+
+      <br>
+
+      
+      <p style="text-align: center;"><a href="VBGT_PureVB.htm" rel="me"><font face="Verdana" size="2"><span style="font-weight: bold;">CONTINUE TO "PURE VB PIXEL ROUTINES"</span></font></a></p>
+
+      
+      <p>&nbsp; </p>
+
+      
+      
+      <hr style="width: 100%; height: 2px;">
+      
+      
+      <p><small><font face="Verdana" size="2"><small><b><i>Disclaimer and Legal Stuff</i></b></small></font></small></p>
+      <p><small><font face="Verdana" size="2"><small><i>Copyright &copy; 2005-2006 by Tanner
+"DemonSpectre" Helland. This article may not be reproduced in any form
+(printed or electronic) without prior written consent from the author.
+This document may, however, be hyperlinked on the world wide web
+without permission from the author.</i></small></font></small></p>
+
+      <p><small><font face="Verdana" size="2"><small><i>All programming source code
+associated with these articles is provided "as is". In no event shall
+the author or any of his affiliates be liable for any consequential,
+special, incidental or indirect damages of any kind arising out of the
+delivery, performance or use of this source code, to the maximum extent
+permitted by applicable law. While this&nbsp;code has been developed
+with great care, it is not possible to warrant that it is error free.
+This source code is not designed or intended to be used in any activity
+that may cause personal injury, death or any other severe damage or
+loss.</i></small></font></small></p>
+
+      <p><small><font face="Verdana" size="2"><small><i>Please contact </i></small></font><a href="mailto:tannerhelland@hotmail.com"><font face="Verdana" size="2"><small>tannerhelland@hotmail.com</small></font></a><i><font face="Verdana" size="2"><small> with feedback and questions regarding this tutorial.</small></font></i></small></p>
+      </td>
+
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+
+</div>
+
+
+</body>
+</html>
